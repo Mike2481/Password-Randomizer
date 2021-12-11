@@ -3,18 +3,17 @@
 
 
 // Global variables (arrays)
-var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var upperCase = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 
-var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var lowerCase = ["abcdefghijklmnopqrstuvwxyz"];
 
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "?", "<", ">", ":", "{", "}", "[", "]"];
+var specialCharacters = ["!@#$%^&*()_+?<>:{}[]"];
 // Global variables used in local functions below
 var passLength;
 var characters;
 var selected;
-var password = "";
 var upperCase;
 var lowerCase;
 var numbers;
@@ -134,14 +133,21 @@ function characters() {
       selected = specialCharacters;
     };
 
-password = password + characters(Math.floor(Math.random(selected) * passLength));
-console.log(password);
-    /* I have run console log on selected and passLength to ensure results log correct and vary depending on selected length - both are good.
-    console.log(selected);
-    console.log(passLength);*/
-
   }
+  // changes the selected from a concatenated array to a string
+  let values = selected.toString();
+  // ensures no previous data makes it into the password (I think this is how to do it)
+  let password = ""
+
+ for (var i = 0; i <= passLength; i++) {
+   // password gets the string from selected values but it gets randomized with the Math.random
+   password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length -1)));
+ }
+ alert(password);
 }
+
+
+
 /*function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
