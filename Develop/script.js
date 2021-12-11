@@ -14,7 +14,7 @@ var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", 
 var passLength;
 var characters;
 var selected;
-var password;
+var password = "";
 var upperCase;
 var lowerCase;
 var numbers;
@@ -132,22 +132,28 @@ function characters() {
     }
     else if (selectSpecialCharacters) {
       selected = specialCharacters;
-    }
-    
+    };
 
-
-    
+password = password + characters(Math.floor(Math.random(selected) * passLength));
+console.log(password);
+    /* I have run console log on selected and passLength to ensure results log correct and vary depending on selected length - both are good.
+    console.log(selected);
+    console.log(passLength);*/
 
   }
-
 }
+/*function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
+console.log(password);*/
 
 /* WHEN all prompts are answered
 THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page */
-
-  //random();
 
 
 // Get references to the #generate element
