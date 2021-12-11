@@ -1,5 +1,11 @@
 // Assignment code here
-
+// Global variables
+var upperCase;
+var lowerCase;
+var numbers;
+var specialCharacters;
+var passLength;
+var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+?<>:{}[]"
 
 /* WHEN I click the button to generate a password
 THEN I am presented with a series of prompts for password criteria */
@@ -57,15 +63,22 @@ function pickChars () {
 /* WHEN I answer each prompt
 THEN my input should be validated and at least one character type should be selected */
 
-          // this alert will prompt when all character types are "false" but I need it to return to beginning of character selection
+          // this alert will prompt when all character types are "false" 
           while(upperCase == false && lowerCase == false && numbers == false && specialCharacters == false) {
             alert("You must select at least one character type");
-            return pickChars();
+            return pickChars(); //this will return to the character selection is all are false
 
           }
-        }       
+          for (var i=0; i < passLength; i++) {
+            var randomNumber = Math.floor(Math.random() * chars.length);
+            password += chars.substring(randomNumber,randomNumber+1);
+          }
+          document.getElementById("#password").value = password
 
 
+
+        }  
+        
 
 }
 
@@ -84,16 +97,14 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page */
 
-  generatePassword();
-  pickChars();
-
+  //random();
 
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+//var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
+/*function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -102,4 +113,7 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);*/
+
+generatePassword();
+pickChars();
