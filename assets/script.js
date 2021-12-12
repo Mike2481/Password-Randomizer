@@ -7,7 +7,7 @@ var upperCase = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 
 var lowerCase = ["abcdefghijklmnopqrstuvwxyz"];
 
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var numbers = [0123456789];
 
 var specialCharacters = ["!@#$%^&*()_+?<>:{}[]"];
 // Global variables used in local functions below
