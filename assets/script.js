@@ -1,7 +1,3 @@
-// Assignment code here
-
-
-
 // Global variables (arrays)
 var upperCase = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 
@@ -23,12 +19,12 @@ var selectLowerCase;
 var selectNumbers;
 var selectSpecialCharacters;
 
-/* WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria */
+/* First Acceptance Criteria: WHEN I click the button to generate a password
+                            THEN I am presented with a series of prompts for password criteria */
 
 // this function links to the button click created in HTML page so that the function will not start until the generate password button is clicked
 function generatePassword () {
-// Here is where I ask the user how many characters their password needs to be
+// User selects length but return sends them back if criteria is not met
   passLength = prompt("How many characters will your password be?  Select between 8-128");
     // if they do not key anything an alert will be sent telling them the criteria again
     if (passLength == false) {
@@ -49,7 +45,7 @@ function generatePassword () {
     
 
 function characters() {
-// user will select if they want to use the specific types.  If else statements were used to provide confirmation of their choice
+// user will select if they want to use the specific types.  If/else statements were used to provide confirmation of their choice
       selectUpperCase = confirm("Would you like to use uppercase letters?");
       if (selectUpperCase) {
         result = alert("You will be using uppercase letters");
@@ -134,46 +130,18 @@ function characters() {
     };
 
   }
-  // changes the selected from a concatenated array to a string
-  let values = selected.toString();
+  // added the join after noticing toString was leaving commas in the password
+  let noComma = selected.join("");
+  // changes the noComma from a concatenated array to a string
+  let values = noComma.toString();
   // ensures no previous data makes it into the password (I think this is how to do it)
   let password = ""
 
  for (var i = 0; i <= passLength; i++) {
-   // password gets the string from selected values but it gets randomized with the Math.random
+   // password gets the string from selected values but it gets randomized with the Math.random - charAt was chosen after researching math.random with a string
    password = password + values.charAt(Math.floor(Math.random() * Math.floor(values.length -1)));
  }
- alert(password);
+
+ // link to HTML id password make the password generate in the page field rather than a window prompt
+ document.getElementById("password").innerHTML = password;
 }
-
-
-
-/*function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-}
-console.log(password);*/
-
-/* WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page */
-
-
-// Get references to the #generate element
-//var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-/*function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);*/
-
