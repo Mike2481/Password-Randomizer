@@ -79,6 +79,8 @@ function characters() {
       alert("You must select at least one character type");
       return characters();
     }
+
+    
     // If all 4 types are selected, the arrays for the selected types are concatenated
     else if (selectUpperCase && selectLowerCase && selectNumbers && selectSpecialCharacters) {
       selected = upperCase.concat(lowerCase, numbers, specialCharacters);
